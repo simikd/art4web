@@ -1,0 +1,31 @@
+version: '3'
+services:
+    php-apache:
+        build:
+            context: ./php-apache
+        container_name: art4web-blog
+        ports:
+            - "8001:80"
+        volumes:
+            - ../blog:/var/www/html
+            - ./app/000-default.conf:/etc/apache2/sites-enabled/000-default.conf
+        links:
+            - 'art4web-db'
+
+    art4web-db:
+        image: mariadb:latest
+        container_name: art4web-db
+        volumes:
+            - mariadb:/var/lib/mysql
+        environment:
+            TZ: "Europe/Bratislava"
+            MYSQL_ALLOW_EMPTY_PASSWORD: "no"
+            MYSQL_ROOT_PASSWORD: "rootPasswd"
+            MYSQL_USER: 'art4web'
+            MYSQL_PASSWORD: 'art4webPasswd'
+            MYSQL_DATABASE: 'art4web_blog'
+        ports:
+          - "3307:3306"
+
+volumes:
+    mariadb:
