@@ -19,7 +19,7 @@
             @endif
 
             @foreach($posts as $post)
-                <x-post-card :post="$post"></x-post-card>
+                <x-post-card :post="$post" :tagFilter="$tagFilter"></x-post-card>
             @endforeach
         </div>
     </div>

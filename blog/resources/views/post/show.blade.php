@@ -17,13 +17,9 @@
                 <div class="py-6">
                     {!! $post->body !!}
                 </div>
-                <div class="px-6 pt-4 pb-2">
-                    @foreach($post->tags as $tag)
-                        <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">
-                            {{ $tag->name }}
-                        </span>
-                    @endforeach
-                </div>
+
+                <x-tags :tags="$post->tags" :filter="false"></x-tags>
+
             </div>
         </div>
 

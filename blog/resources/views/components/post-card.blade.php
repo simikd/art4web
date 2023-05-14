@@ -25,13 +25,9 @@
         </div>
         <div class="text-gray-700 text-base">{{ $post->description }}</div>
     </div>
-    <div class="px-6 pt-4 pb-2">
-        @foreach($post->tags as $tag)
-            <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">
-                {{ $tag->name }}
-            </span>
-        @endforeach
-    </div>
+
+    <x-tags :tags="$post->tags" :filter="true" :tagFilter="$tagFilter"></x-tags>
+
     <div class="text-right m-4">
         <a href="{{ route('post.show', ['post' => $post]) }}">
             <x-button.secondary class="ml-4">
