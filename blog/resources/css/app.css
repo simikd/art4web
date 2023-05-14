@@ -10,3 +10,15 @@
     border-color: rgb(209 213 219);
     background-color: rgb(249 250 251);
 }
+
+.tox-dialog .tox-dialog__content-js .tox-dialog__body .tox-form__controls-h-stack input[type=url].tox-textfield {
+    display: none;
+}
+
+.tox-dialog .tox-dialog__content-js .tox-dialog__body div.tox-form__group:first-child label {
+    display: none;
+}
+
+.tox-dialog .tox-dialog__content-js .tox-dialog__body .tox-form__controls-h-stack div.tox-form__group:first-child label {
+    display: block;
+}
