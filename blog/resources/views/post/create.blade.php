@@ -34,7 +34,15 @@
 
                 <div class="flex py-5">
                     <label for="tags" hidden>Select or create new tags.</label>
-                    <select class="form-control w-full border-none bg-gray-100 rounded-lg" id="tags" name="tags[]" multiple></select>
+                    <select class="form-control w-full border-none bg-gray-100 rounded-lg" id="tags" name="tags[]" multiple>
+                        @if(old('tags'))
+                            @foreach(old('tags') as $tag)
+                                <option value="{{ $tag }}" selected>
+                                    {{ $tag }}
+                                </option>
+                            @endforeach
+                        @endif
+                    </select>
                 </div>
 
                 <div class="flex flex-row-reverse p-4">
