@@ -38,7 +38,9 @@
 "
 >
     <div>
+        <x-label :label="'Post content'" :for="'body'"></x-label>
         <input
+            id="body"
             x-ref="tinymce"
             type="textarea"
             {{ $attributes }}

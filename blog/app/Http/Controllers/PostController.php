@@ -47,6 +47,7 @@ class PostController extends Controller
     {
         $validated = $request->validate([
             'title' => 'required|max:255',
+            'description' => 'required|max:255',
             'body' => 'required'
         ]);
 
@@ -130,8 +131,14 @@ class PostController extends Controller
      */
     public function update(Request $request, string $id): RedirectResponse
     {
+        $validated = $request->validate([
+            'title' => 'required|max:255',
+            'description' => 'required|max:255',
+            'body' => 'required'
+        ]);
+
         $post = Post::find($id);
-        $post->update($request->all());
+        $post->update($validated);
 
         $this->updateTagsAttachments($request->tags, $post);
 

@@ -5,3 +5,8 @@
 .select2-container--default .select2-search--inline .select2-search__field {
     height: 22px !important;
 }
+
+.select2-container--default.select2-container--focus .select2-selection--multiple {
+    border-color: rgb(209 213 219);
+    background-color: rgb(249 250 251);
+}

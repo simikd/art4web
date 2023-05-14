@@ -14,22 +14,22 @@
             </h2>
             @if((!isset($hideIcons) || !$hideIcons) && $post->user_id === Auth::id())
                 <div class="ml-auto flex">
-                        <a class="mr-4" href="{{ route('post.edit', ['post' => $post]) }}" >
-                            @svg('heroicon-o-pencil', 'w-5 h-5')
-                        </a>
-                        <a href="#" wire:click="$emit('triggerDelete',{{ $post->id }})">
-                            @svg('heroicon-o-trash', 'w-5 h-5')
-                        </a >
+                    <a class="mr-4" href="{{ route('post.edit', ['post' => $post]) }}" >
+                        @svg('heroicon-o-pencil', 'w-5 h-5')
+                    </a>
+                    <a href="#" wire:click="$emit('triggerDelete',{{ $post->id }})">
+                        @svg('heroicon-o-trash', 'w-5 h-5')
+                    </a >
                 </div>
             @endif
         </div>
-        <div class="text-gray-700 text-base">{{ Str::of(strip_tags($post->body))->words(50) }}</div>
+        <div class="text-gray-700 text-base">{{ $post->description }}</div>
     </div>
     <div class="px-6 pt-4 pb-2">
         @foreach($post->tags as $tag)
             <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">
-                            {{ $tag->name }}
-                        </span>
+                {{ $tag->name }}
+            </span>
         @endforeach
     </div>
     <div class="text-right m-4">
