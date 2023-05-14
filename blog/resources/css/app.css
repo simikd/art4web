@@ -22,3 +22,7 @@
 .tox-dialog .tox-dialog__content-js .tox-dialog__body .tox-form__controls-h-stack div.tox-form__group:first-child label {
     display: block;
 }
+
+.tox .tox-button--naked {
+    display: none !important;
+}
