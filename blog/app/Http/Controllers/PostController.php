@@ -85,10 +85,24 @@ class PostController extends Controller
         $this->posts = Post::orderByDesc('created_at')->get();
         $post = Post::findOrFail($id);
 
-        // Find similar posts by tags
+        $tagIds = $post->tags->pluck('id')->toArray();
         $similarPosts = [];
-        foreach ($post->tags as $tag) {
-            $similarPosts[] = $tag->posts()->where('posts.id', '!=', $post->id)->first();
+
+        $similarPostIds = DB::table('posts')
+            ->join('post_tag', 'posts.id', '=', 'post_tag.post_id')
+            ->join('tags', 'tags.id', '=', 'post_tag.tag_id')
+            ->select('posts.id')
+            ->whereIn('tags.id', $tagIds)
+            ->where('posts.id', '!=', $post->id)
+            ->where('posts.deleted_at',  null)
+            ->where('posts.user_id', '!=', Auth::id())
+            ->take(5)
+            ->distinct()
+            ->get()->pluck('id')->toArray();
+
+        if (!empty($similarPostIds)) {
+            $similarPosts = Post::whereIn('id', $similarPostIds)
+                ->get();
         }
 
         return view('post.show', ['post' => $post, 'similarPosts' => $similarPosts]);

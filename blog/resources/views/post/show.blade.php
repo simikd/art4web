@@ -26,5 +26,17 @@
                 </div>
             </div>
         </div>
+
+        @if(!empty($similarPosts))
+            <div class="w-1/2 mx-auto sm:px-6 lg:px-8">
+                <div class="text-center mb-4">
+                    <h2 class="text-2xl font-bold leading-none tracking-tight text-gray-900 " >Check out these similar posts as well!</h2>
+                </div>
+                @foreach($similarPosts as $post)
+                    <x-post-card :post="$post" :hideIcons="true"></x-post-card>
+                @endforeach
+            </div>
+        @endif
+
     </div>
 </x-app-layout>
