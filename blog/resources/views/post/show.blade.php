@@ -29,7 +29,7 @@
                     <h2 class="text-2xl font-bold leading-none tracking-tight text-gray-900 " >Check out these similar posts as well!</h2>
                 </div>
                 @foreach($similarPosts as $post)
-                    <x-post-card :post="$post" :hideIcons="true"></x-post-card>
+                    <x-post-card :post="$post" :hideIcons="true" :filter="false"></x-post-card>
                 @endforeach
             </div>
         @endif

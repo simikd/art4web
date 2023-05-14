@@ -26,7 +26,7 @@
         <div class="text-gray-700 text-base">{{ $post->description }}</div>
     </div>
 
-    <x-tags :tags="$post->tags" :filter="true" :tagFilter="$tagFilter"></x-tags>
+    <x-tags :tags="$post->tags" :filter="$filter" :tagFilter="$tagFilter ?? false"></x-tags>
 
     <div class="text-right m-4">
         <a href="{{ route('post.show', ['post' => $post]) }}">
